@@ -1,11 +1,12 @@
 import React from 'react';
 import Aux from '../../hoc/Aux.js'
+import Navbar from '../../containers/Navbar/Navbar.js';
 
 const Layout = ( props ) => {
     return (
         <Aux>
             <header>
-                Navbar
+                <Navbar/>
             </header>
             {props.children}
         </Aux>

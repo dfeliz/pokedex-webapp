@@ -1,13 +1,15 @@
-import React from 'react'
+import React, {Component} from 'react'
 import Layout from './components/Layout/Layout'
-import PokedexContainer from './containers/PokedexContainer'
+import PokedexContainer from './containers/PokedexContainer/PokedexContainer'
 
-const Pokedex = ( props ) => {
-    return (
-        <Layout>
-            <PokedexContainer />
-        </Layout>
-    );
+class Pokedex extends Component {
+    render() {
+        return (
+            <Layout>
+                <PokedexContainer />
+            </Layout>
+        );
+    }
 };
 
 export default Pokedex;

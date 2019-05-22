@@ -1,0 +1,20 @@
+.Form-container {
+    width: 600px !important;
+    padding-top: 20px !important;
+}
+
+.Form-segment {
+    display: grid;
+    grid-template-rows: auto auto;
+}
+
+.Form-segment img {
+    height: 100px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.Form-segment div h2 {
+    margin-top: 5px;
+}
