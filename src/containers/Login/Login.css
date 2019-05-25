@@ -1,0 +1,14 @@
+
+.Forgot-password {
+    color: rgb(155, 155, 155);
+    cursor: pointer;
+    transition: 0.1s all ease-in-out;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.Forgot-password:hover {
+    color: rgb(97, 97, 97);
+    transition: 0.1s all ease-in-out; 
+}

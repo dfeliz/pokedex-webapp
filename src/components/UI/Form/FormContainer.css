@@ -4,8 +4,8 @@
 }
 
 .Form-segment {
-    display: grid;
-    grid-template-rows: auto auto;
+    /* display: grid;
+    grid-template-rows: auto auto; */
 }
 
 .Form-segment img {
@@ -15,6 +15,6 @@
     margin-right: auto;
 }
 
-.Form-segment div h2 {
-    margin-top: 5px;
+.Form-segment h2 {
+    margin-bottom: 0;
 }

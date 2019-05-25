@@ -8,8 +8,6 @@ const formContainer = ( props ) => {
             <Segment className="Form-segment">
             <div>
                 <img src="https://semantic-ui.com/images/wireframe/image.png" alt="Logo"/>
-                <h2>Register</h2>
-                <div className="ui divider"/>
             </div>
                 {props.children}     
             </Segment>
