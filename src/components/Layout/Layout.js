@@ -1,6 +1,6 @@
 import React from 'react';
-import Aux from '../../hoc/Aux.js'
-import Navbar from '../../containers/Navbar/Navbar.js';
+import Aux from '../../hoc/Aux/Aux.js'
+import Navbar from '../../containers/Navbar/NavbarContainer';
 
 const Layout = ( props ) => {
     return (
