@@ -21,6 +21,7 @@ class RegisterContainer extends Component {
         password: "",
         repeatedPassword: "",
         redirect: false,
+        loading: false,
     }
 
     handleTextChange = (event, field) => { 
@@ -51,6 +52,7 @@ class RegisterContainer extends Component {
 
     handleFormSubmit = async (event) => {
         event.preventDefault();
+        this.setState({loading: true});
         let data = {
             user: {
                 user_name: this.state.name,
@@ -80,6 +82,7 @@ class RegisterContainer extends Component {
             }).catch((err) => {
                 //TODO: Better error handling
                 alert('User or email already exists in database');
+                this.setState({loading: false});
             });
         }
     }
@@ -93,6 +96,7 @@ class RegisterContainer extends Component {
                     onTextChange={this.handleTextChange} 
                     onSelectChange={this.handleSelectChange}
                     redirect={this.state.redirect}
+                    loading={this.state.loading}
                     />
             </FormContainer>
         )
