@@ -9,20 +9,23 @@ const register = ( props ) => (
         <h2>Register</h2>
         <div className="ui divider"/>
         <Form.Group>
-            <Form className="Register" onSubmit={this.props.onFormSubmit}>
+            <Form className="Register" onSubmit={props.onFormSubmit}>
                 <Form.Field 
                     id="username"
                     control={Input}
                     label="Username"
                     placeholder="Username" 
-                    onChange={(e) => this.props.onTextChange(e, "username")}
+                    onChange={(e) => props.onTextChange(e, "username")}
+                    required
                     />
                 <Form.Field 
                     id="email"
+                    type="email"
                     control={Input}
                     label="Email"
                     placeholder="Email" 
-                    onChange={(e) => this.props.onTextChange(e, "email")}
+                    onChange={(e) => props.onTextChange(e, "email")}
+                    required
                     />
                 <Form.Group>
                     <Form.Field 
@@ -32,7 +35,8 @@ const register = ( props ) => (
                         placeholder="Password"
                         type="password"
                         width={8} 
-                        onChange={(e) => this.props.onTextChange(e, "password")}
+                        onChange={(e) => props.onTextChange(e, "password")}
+                        required
                         />
                     <Form.Field 
                         id="repeat-password"
@@ -40,7 +44,10 @@ const register = ( props ) => (
                         label="Repeat password"
                         placeholder="Repeat password"
                         type="password"
-                        width={8} />
+                        width={8}
+                        onChange={(e) => props.onTextChange(e, "repeatedPassword")}
+                        required
+                        />
                 </Form.Group>
 
                 <div className="ui divider"/>
@@ -51,7 +58,8 @@ const register = ( props ) => (
                         label="First name"
                         placeholder="First name"
                         width={8} 
-                        onChange={(e) => this.props.onTextChange(e, "name")}
+                        onChange={(e) => props.onTextChange(e, "name")}
+                        required
                         />
                     <Form.Field 
                         id="lastname"
@@ -59,7 +67,8 @@ const register = ( props ) => (
                         label="Last name"
                         placeholder="Last name"
                         width={8} 
-                        onChange={(e) => this.props.onTextChange(e, "lastname")}
+                        onChange={(e) => props.onTextChange(e, "lastname")}
+                        required
                         />
                 </Form.Group>
                 <Form.Field 
@@ -68,27 +77,29 @@ const register = ( props ) => (
                     options={props.genderOptions}
                     label="Gender"
                     placeholder="Gender" 
-                    onChange={this.props.onSelectChange}
+                    onChange={props.onSelectChange}
                     />
                 <Form.Field
                     id="bithdate"
                     control={Input}
                     label="Birthdate"
                     placeholder="Birthdate"
-                    onChange={(e) => this.props.onTextChange(e, "birthdate")}
-                />
+                    onChange={(e) => props.onTextChange(e, "birthdate")}
+                    required
+                    />
                 <Form.Field 
                     id="city"
                     control={Input}
                     label="City"
                     placeholder="City" 
-                    onChange={(e) => this.props.onTextChange(e, "city")}
+                    onChange={(e) => props.onTextChange(e, "city")}
+                    required
                     />
 
                 <Button fluid color="green">Register</Button>
             </Form>
         </Form.Group>
-        {this.props.redirect ? <Redirect to="/confirm-email"/> : null}
+        {props.redirect ? <Redirect to="/confirm-email"/> : null}
     </Aux>
 );
 

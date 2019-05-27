@@ -25,7 +25,7 @@ const login = ( props ) => (
                 />
                 <Button fluid color="blue">Login</Button>
             </Form>
-            <span className="Forgot-password">Forgot password</span>
+            <span className="Forgot-password">Forgot my password :(</span>
             <div className="ui horizontal divider">OR</div>
             <Button fluid color="green">Register</Button>
         </Form.Group>

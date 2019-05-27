@@ -5,7 +5,7 @@ import ConfirmEmail from './components/ConfirmEmail/ConfirmEmail'
 import Register from './containers/Register/RegisterContainer';
 import Login from './containers/Login/LoginContainer';
 import err404 from './components/Error404/err404';
-// import Register from './containers/'
+import Activate from './containers/Activate/Activate';
 
 function App() {
   return (
@@ -15,6 +15,7 @@ function App() {
         <Route path="/register" component={Register} exact/>
         <Route path="/login" component={Login} exact/>
         <Route path="/confirm-email" component={ConfirmEmail} exact/>
+        <Route path="/activate" component={Activate} />
         <Route component={err404}/>
       </Switch>
     </BrowserRouter>

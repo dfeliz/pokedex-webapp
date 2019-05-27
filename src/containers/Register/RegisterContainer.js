@@ -19,6 +19,7 @@ class RegisterContainer extends Component {
         gender: "",
         username: "",
         password: "",
+        repeatedPassword: "",
         redirect: false,
     }
 
@@ -28,6 +29,24 @@ class RegisterContainer extends Component {
 
     handleSelectChange = (_, data) => {
         this.setState({ gender: data.value });
+    }
+
+    handleFormValidation = () => {
+        let pw = this.state.password;
+        let confirmpw = this.state.repeatedPassword;
+
+        if (pw.length <= 7) {
+            alert('Password must have at least 8 characters');
+        }
+        else {
+            if (pw === confirmpw) {
+                return true;
+            }
+            else {
+                alert('Passwords dont match');
+                return false;
+            }
+        }
     }
 
     handleFormSubmit = async (event) => {
@@ -45,18 +64,24 @@ class RegisterContainer extends Component {
                 user_picture: "",
             }
         }
-        await axios.post('http://localhost:3000/user/register', data, {
-            headers: {
-                "Content-Type": "application/json",
-            }
-        }).then((response) => {
-            console.log(response);
-            if (response.status === 200) {
-                this.setState({redirect: true});
-            }
-        }).catch((err) => {
-            console.log("There was a problem with the operation, " + err);
-        });
+
+        let formIsValid = this.handleFormValidation();
+
+        if (formIsValid) {
+            await axios.post('http://localhost:3000/user/register', data, {
+                headers: {
+                    "Content-Type": "application/json",
+                }
+            }).then((response) => {
+                console.log(response);
+                if (response.status === 200) {
+                    this.setState({redirect: true});
+                }
+            }).catch((err) => {
+                //TODO: Better error handling
+                alert('User or email already exists in database');
+            });
+        }
     }
 
     render () {
@@ -66,7 +91,8 @@ class RegisterContainer extends Component {
                     genderOptions={GENDER_OPTIONS} 
                     onFormSubmit={this.handleFormSubmit} 
                     onTextChange={this.handleTextChange} 
-                    onSelectChange={this.handleSelectChange} 
+                    onSelectChange={this.handleSelectChange}
+                    redirect={this.state.redirect}
                     />
             </FormContainer>
         )
