@@ -4,6 +4,7 @@ import Activated from '../../components/Activate/Activated';
 import NoActivation from '../../components/Activate/NoActivation';
 import {withRouter} from 'react-router-dom';
 import queryString from 'query-string';
+import axios from 'axios';
 
 class Activate extends Component {
     state = { 
@@ -11,11 +12,20 @@ class Activate extends Component {
         email: '',
     };
 
-    componentDidMount() {
+    async componentDidMount() {
         const values = queryString.parse(this.props.location.search);
         if (values.code !== undefined & values.email !== undefined) {
-            this.setState({isValid: true});
-            //TODO: Axios post email and code for account activation
+            const data = {
+                hash: values.code,
+                email: values.email,
+            }
+            await axios.post('http://localhost:3000/user/activate', data)
+                .then((response) => {
+                    this.setState({isValid: true});
+                })
+                .catch((err) => {
+                    console.log(err);
+                })
         }
         else {
             this.setState({isValid: false});
