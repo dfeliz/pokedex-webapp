@@ -50,6 +50,7 @@ class RegisterContainer extends Component {
         }
     }
 
+
     handleFormSubmit = async (event) => {
         event.preventDefault();
         this.setState({loading: true});

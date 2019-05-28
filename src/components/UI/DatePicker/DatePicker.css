@@ -1,0 +1,9 @@
+.DatePicker label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.DatePicker {
+    margin-bottom: 10px;
+}

@@ -1,7 +1,7 @@
 import React from 'react';
 import Aux from '../../hoc/Aux/Aux';
 import { Form, Input, Button } from 'semantic-ui-react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Redirect } from 'react-router-dom';
 import './Login.css';
 
 const login = ( props ) => (
@@ -9,12 +9,13 @@ const login = ( props ) => (
         <h2>Login</h2>
         <div className="ui divider"/>
         <Form.Group>
-            <Form className="Login">
+            <Form className="Login" onSubmit={(e) => props.onFormSubmit(e)}>
                 <Form.Field
                     id="username"
                     label="Username"
                     placeholder="Username"
                     control={Input}
+                    onChange={(e) => props.onTextChange(e, "username")}
                 />
                 <Form.Field
                     id="password"
@@ -22,6 +23,7 @@ const login = ( props ) => (
                     placeholder="Password"
                     type="password"
                     control={Input}
+                    onChange={(e) => props.onTextChange(e, "password")}
                 />
                 <Button fluid color="blue">Login</Button>
             </Form>
@@ -29,6 +31,7 @@ const login = ( props ) => (
             <div className="ui horizontal divider">OR</div>
             <Button fluid color="green">Register</Button>
         </Form.Group>
+        {props.redirect ? <Redirect to="/"/> : null}
     </Aux>
 );
 

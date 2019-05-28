@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, Form, Input, Select } from 'semantic-ui-react';
 import {Redirect, withRouter} from 'react-router-dom';
+import {DatePicker} from '../UI/DatePicker/DatePicker';
 import Aux from '../../hoc/Aux/Aux';
 import './Register.css';
 
@@ -79,14 +80,11 @@ const register = ( props ) => (
                     placeholder="Gender" 
                     onChange={props.onSelectChange}
                     />
-                <Form.Field
-                    id="bithdate"
-                    control={Input}
+                <DatePicker 
                     label="Birthdate"
-                    placeholder="Birthdate"
                     onChange={(e) => props.onTextChange(e, "birthdate")}
                     required
-                    />
+                />
                 <Form.Field 
                     id="city"
                     control={Input}
