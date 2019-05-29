@@ -1,14 +1,12 @@
 import React from 'react';
 import { Button, Form, Input, Select } from 'semantic-ui-react';
-import {Redirect, withRouter} from 'react-router-dom';
+import {Redirect, withRouter, NavLink} from 'react-router-dom';
 import {DatePicker} from '../UI/DatePicker/DatePicker';
 import Aux from '../../hoc/Aux/Aux';
 import './Register.css';
 
 const register = ( props ) => (
     <Aux>
-        <h2>Register</h2>
-        <div className="ui divider"/>
         <Form.Group>
             <Form className="Register" onSubmit={props.onFormSubmit}>
                 <Form.Field 
@@ -24,7 +22,7 @@ const register = ( props ) => (
                     type="email"
                     control={Input}
                     label="Email"
-                    placeholder="Email" 
+                    placeholder="johndoe@example.com" 
                     onChange={(e) => props.onTextChange(e, "email")}
                     required
                     />
@@ -98,6 +96,10 @@ const register = ( props ) => (
                     props.loading ? 
                     <Button fluid loading disabled color="green">Register</Button> : <Button fluid color="green">Register</Button>
                 }
+                <div className="ui horizontal divider">OR</div>
+                <NavLink to="/login">
+                    <Button fluid color="blue">Login</Button>
+                </NavLink>
             </Form>
         </Form.Group>
         {

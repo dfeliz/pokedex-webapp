@@ -53,24 +53,25 @@ class RegisterContainer extends Component {
 
     handleFormSubmit = async (event) => {
         event.preventDefault();
-        this.setState({loading: true});
-        let data = {
-            user: {
-                user_name: this.state.name,
-                user_lastname: this.state.lastname,
-                user_birthdate: this.state.birthdate,
-                user_city: this.state.city,
-                user_gender: this.state.gender,
-                user_username: this.state.username,
-                user_email: this.state.email,
-                user_password: this.state.password,
-                user_picture: "",
-            }
-        }
 
         let formIsValid = this.handleFormValidation();
 
         if (formIsValid) {
+            this.setState({loading: true});
+            let data = {
+                user: {
+                    user_name: this.state.name,
+                    user_lastname: this.state.lastname,
+                    user_birthdate: this.state.birthdate,
+                    user_city: this.state.city,
+                    user_gender: this.state.gender,
+                    user_username: this.state.username,
+                    user_email: this.state.email,
+                    user_password: this.state.password,
+                    user_picture: "",
+                }
+            }
+
             await axios.post('http://localhost:3000/user/register', data, {
                 headers: {
                     "Content-Type": "application/json",
@@ -81,8 +82,7 @@ class RegisterContainer extends Component {
                     this.setState({redirect: true});
                 }
             }).catch((err) => {
-                //TODO: Better error handling
-                alert('User or email already exists in database');
+                alert(err);
                 this.setState({loading: false});
             });
         }
@@ -90,7 +90,7 @@ class RegisterContainer extends Component {
 
     render () {
         return (
-            <FormContainer>
+            <FormContainer title="Register">
                 <Register 
                     genderOptions={GENDER_OPTIONS} 
                     onFormSubmit={this.handleFormSubmit} 

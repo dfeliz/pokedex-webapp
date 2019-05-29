@@ -1,10 +1,14 @@
 import axios from 'axios';
 
 const verifyUser = async (data) => {
-    let response = false;
+    let response = {
+        exists: false,
+        username: null,
+    };
     await axios.post("http://localhost:3000/token/verify", data)
-        .then(() => {
-            response = true;
+        .then((requestResponse) => {
+            response.exists = true;
+            response.username = requestResponse.data.username;
         })
         .catch((err) => {
             console.log(err);

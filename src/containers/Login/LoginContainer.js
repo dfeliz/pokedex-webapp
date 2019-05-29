@@ -36,6 +36,8 @@ class LoginContainer extends Component {
             })
             .catch((err) => {
                 console.log(err);
+                this.setState({ loading: false })
+                alert('Could not connect to server, please try again later');
             })
     }
 
@@ -45,7 +47,7 @@ class LoginContainer extends Component {
 
     render () {
         return (
-            <FormContainer>
+            <FormContainer title="Login">
                 <Login 
                     onFormSubmit={this.handleFormSubmit} 
                     onTextChange={this.handleTextChange}

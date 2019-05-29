@@ -12,6 +12,7 @@ import Home from './containers/Home/HomeContainer';
 import Profile from './containers/Profile/ProfileContainer';
 import Settings from './containers/Settings/Settings';
 import Logout from './containers/Logout/LogoutContainer';
+import ForgotPassword from './containers/ForgotPassword/ForgotPasswordContainer';
 
 const PrivateRoute = ({ component: Component, isLoggedIn, ...rest }) => (
   <Route {...rest} render={ (props) => (
@@ -37,7 +38,8 @@ class App extends Component {
         username: user,
       }
       let response = await PokedexApi.verifyUser(data);
-      this.setState({ isLoggedIn: response, username: user })
+      window.localStorage.setItem("user", response.username);
+      this.setState({ isLoggedIn: response.exists, username: response.username })
     }
   }
 
@@ -47,10 +49,12 @@ class App extends Component {
         <BrowserRouter>
           <Switch>
             <Route path="/" component={Pokedex} exact/>
+            <GuestRoute path="/login" isLoggedIn={this.state.isLoggedIn} component={Login} exact/>
+            <GuestRoute path="/register" isLoggedIn={this.state.isLoggedIn} component={Register} exact/>
             <GuestRoute path="/confirm-email" isLoggedIn={this.state.isLoggedIn} component={ConfirmEmail} exact/>
             <GuestRoute path="/activate" isLoggedIn={this.state.isLoggedIn} component={Activate} />
-            <GuestRoute path="/register" isLoggedIn={this.state.isLoggedIn} component={Register} exact/>
-            <GuestRoute path="/login" isLoggedIn={this.state.isLoggedIn} component={Login} exact/>
+            <GuestRoute path="/forgot-password" isLoggedIn={this.state.isLoggedIn} component={ForgotPassword} exact/>
+            { /*<GuestRoute path="/reset-password" isLoggedIn={this.state.isLoggedIn} component={ResetPassword} /> */ }
             <PrivateRoute path="/logout" isLoggedIn={this.state.isLoggedIn} component={Logout} exact/>
             <PrivateRoute path="/home" isLoggedIn={this.state.isLoggedIn} component={Home} exact/>
             <PrivateRoute path="/profile" isLoggedIn={this.state.isLoggedIn} component={Profile} exact/>

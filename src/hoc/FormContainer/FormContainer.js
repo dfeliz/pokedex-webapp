@@ -8,6 +8,8 @@ const formContainer = ( props ) => {
         <Container className="Form-container">
             <Segment className="Form-segment">
             <Logo/>
+            <h2>{props.title}</h2>
+            <div className="ui divider"/>
                 {props.children}     
             </Segment>
         </Container>

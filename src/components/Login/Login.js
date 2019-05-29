@@ -1,13 +1,11 @@
 import React from 'react';
 import Aux from '../../hoc/Aux/Aux';
 import { Form, Input, Button } from 'semantic-ui-react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, NavLink } from 'react-router-dom';
 import './Login.css';
 
 const login = ( props ) => (
     <Aux>
-        <h2>Login</h2>
-        <div className="ui divider"/>
         <Form.Group>
             <Form className="Login" onSubmit={(e) => props.onFormSubmit(e)}>
                 <Form.Field
@@ -30,9 +28,13 @@ const login = ( props ) => (
                     <Button loading disabled fluid color="blue">Login</Button> : <Button fluid color="blue">Login</Button>
                 }
             </Form>
-            <span className="Forgot-password">Forgot my password :(</span>
+            <NavLink to="/forgot-password">
+                <span className="Forgot-password">Forgot my password :(</span>
+            </NavLink>
             <div className="ui horizontal divider">OR</div>
-            <Button fluid color="green">Register</Button>
+            <NavLink to="/register">
+                <Button fluid color="green">Register</Button>
+            </NavLink>
         </Form.Group>
     </Aux>
 );
