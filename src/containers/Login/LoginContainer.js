@@ -1,17 +1,19 @@
 import React, { Component } from 'react';
 import FormContainer from '../../hoc/FormContainer/FormContainer';
-import axios from 'axios';
+import {withRouter} from 'react-router-dom';
 import Login from '../../components/Login/Login';
+import axios from 'axios';
 
 class LoginContainer extends Component {
     state = { 
         username: '', 
         password: '',
-        redirect: false,
+        loading: false,
     }
 
     handleFormSubmit = async (e) => {
         e.preventDefault();
+        this.setState({loading: true});
         let {username, password} = this.state;
         let data = {
             user: {
@@ -19,12 +21,17 @@ class LoginContainer extends Component {
                 password
             }
         }
-        await axios.get('http://localhost:3000/user/login', data)
+        await axios.post(`http://localhost:3000/user/login`, data)
             .then((response) => {
-                if (response.status === 200) {
-                    // Store keys, set logged in
+                if (response.statusText === "Success") {
+                    window.localStorage.setItem("token", response.data.token);
+                    window.localStorage.setItem("user", response.data.username);
+                    window.location.href="/home";
+                }
+                else {
                     console.log(response);
-                    this.setState({ redirect: true });
+                    this.setState({ loading: false });
+                    alert('User and password combination not found');
                 }
             })
             .catch((err) => {
@@ -39,10 +46,15 @@ class LoginContainer extends Component {
     render () {
         return (
             <FormContainer>
-                <Login onFormSubmit={this.handleFormSubmit} onTextChange={this.handleTextChange}/>
+                <Login 
+                    onFormSubmit={this.handleFormSubmit} 
+                    onTextChange={this.handleTextChange}
+                    redirect={this.state.redirect}
+                    loading={this.state.loading}
+                    />
             </FormContainer>
         );
     }
 }
 
-export default LoginContainer;
+export default withRouter(LoginContainer);

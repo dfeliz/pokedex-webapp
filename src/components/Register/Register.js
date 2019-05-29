@@ -94,10 +94,16 @@ const register = ( props ) => (
                     required
                     />
 
-                {props.loading ? <Button fluid loading disabled color="green">Register</Button> : <Button fluid color="green">Register</Button>}
+                {
+                    props.loading ? 
+                    <Button fluid loading disabled color="green">Register</Button> : <Button fluid color="green">Register</Button>
+                }
             </Form>
         </Form.Group>
-        {props.redirect ? <Redirect to="/confirm-email"/> : null}
+        {
+            props.redirect ? 
+            <Redirect to="/confirm-email"/> : null
+        }
     </Aux>
 );
 

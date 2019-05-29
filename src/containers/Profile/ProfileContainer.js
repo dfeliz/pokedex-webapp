@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
+import Profile from '../../components/Profile/Profile';
 import Layout from '../../components/Layout/Layout';
-import Pokedex from '../../components/Pokedex/Pokedex';
 
-class PokedexContainer extends Component {
+class ProfileContainer extends Component {
+
 
     render () {
         return (
             <Layout>
-                <Pokedex />
+                <Profile />
             </Layout>
-        )
+        );
     }
 }
 
-export default PokedexContainer;
+export default ProfileContainer;

@@ -1,0 +1,26 @@
+.Navbar {
+    width: 100%;
+    height: 50px;
+    background: white;
+    display: flex;
+}
+
+.LogoContainer {
+    height: 50px;
+    margin-left: 20px;
+}
+
+.LogoContainer h1 {
+    line-height: 50px;
+}
+
+.Right {
+    height: 50px;
+    line-height: 50px;
+    right: 20px;
+    position: absolute;
+}
+
+.UserText {
+    margin-right: 10px;
+}

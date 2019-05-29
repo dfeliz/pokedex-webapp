@@ -1,14 +1,13 @@
 import React from 'react';
 import {Container, Segment} from 'semantic-ui-react';
+import Logo from '../../components/UI/Logo/Logo'
 import './FormContainer.css';
 
 const formContainer = ( props ) => {
     return (
         <Container className="Form-container">
             <Segment className="Form-segment">
-            <div>
-                <img src="https://semantic-ui.com/images/wireframe/image.png" alt="Logo"/>
-            </div>
+            <Logo/>
                 {props.children}     
             </Segment>
         </Container>

@@ -1,6 +1,7 @@
 import React from 'react';
 import Aux from '../../hoc/Aux/Aux.js'
 import Navbar from '../../containers/Navbar/NavbarContainer';
+import './Layout.css'
 
 const Layout = ( props ) => {
     return (
@@ -8,7 +9,9 @@ const Layout = ( props ) => {
             <header>
                 <Navbar/>
             </header>
-            {props.children}
+            <div className="Body">
+                {props.children}
+            </div>
         </Aux>
     );
 };

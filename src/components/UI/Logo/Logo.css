@@ -1,0 +1,15 @@
+.Logo {
+    display: flex;
+    cursor: pointer;
+}
+
+.Logo img {
+    height: 80px;
+    display: block;
+    margin-left: auto;
+}
+
+.Logo h1 {
+    margin-right: auto;
+    color: black;
+}

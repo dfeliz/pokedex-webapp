@@ -1,7 +1,7 @@
 import React from 'react';
 import Aux from '../../hoc/Aux/Aux';
 import { Form, Input, Button } from 'semantic-ui-react';
-import { withRouter, Redirect } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import './Login.css';
 
 const login = ( props ) => (
@@ -25,13 +25,15 @@ const login = ( props ) => (
                     control={Input}
                     onChange={(e) => props.onTextChange(e, "password")}
                 />
-                <Button fluid color="blue">Login</Button>
+                {
+                    props.loading ? 
+                    <Button loading disabled fluid color="blue">Login</Button> : <Button fluid color="blue">Login</Button>
+                }
             </Form>
             <span className="Forgot-password">Forgot my password :(</span>
             <div className="ui horizontal divider">OR</div>
             <Button fluid color="green">Register</Button>
         </Form.Group>
-        {props.redirect ? <Redirect to="/"/> : null}
     </Aux>
 );
 

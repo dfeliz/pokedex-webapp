@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import Layout from '../../components/Layout/Layout';
-import Pokedex from '../../components/Pokedex/Pokedex';
 
-class PokedexContainer extends Component {
-
+class Settings extends Component {
     render () {
         return (
             <Layout>
-                <Pokedex />
+                <div>
+                    Settings page
+                </div>
             </Layout>
-        )
+        );
     }
 }
 
-export default PokedexContainer;
+export default Settings;
