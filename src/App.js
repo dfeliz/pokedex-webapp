@@ -13,6 +13,7 @@ import Profile from './containers/Profile/ProfileContainer';
 import Settings from './containers/Settings/Settings';
 import Logout from './containers/Logout/LogoutContainer';
 import ForgotPassword from './containers/ForgotPassword/ForgotPasswordContainer';
+import ResetPassword from './containers/ResetPassword/ResetPasswordContainer';
 
 const PrivateRoute = ({ component: Component, isLoggedIn, ...rest }) => (
   <Route {...rest} render={ (props) => (
@@ -54,7 +55,7 @@ class App extends Component {
             <GuestRoute path="/confirm-email" isLoggedIn={this.state.isLoggedIn} component={ConfirmEmail} exact/>
             <GuestRoute path="/activate" isLoggedIn={this.state.isLoggedIn} component={Activate} />
             <GuestRoute path="/forgot-password" isLoggedIn={this.state.isLoggedIn} component={ForgotPassword} exact/>
-            { /*<GuestRoute path="/reset-password" isLoggedIn={this.state.isLoggedIn} component={ResetPassword} /> */ }
+            <GuestRoute path="/reset-password" isLoggedIn={this.state.isLoggedIn} component={ResetPassword} />
             <PrivateRoute path="/logout" isLoggedIn={this.state.isLoggedIn} component={Logout} exact/>
             <PrivateRoute path="/home" isLoggedIn={this.state.isLoggedIn} component={Home} exact/>
             <PrivateRoute path="/profile" isLoggedIn={this.state.isLoggedIn} component={Profile} exact/>
