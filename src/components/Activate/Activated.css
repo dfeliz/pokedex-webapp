@@ -1,0 +1,7 @@
+.LinkToLogin:hover {
+    text-decoration: underline;
+}
+
+.LinkToLogin {
+    cursor: pointer;
+}

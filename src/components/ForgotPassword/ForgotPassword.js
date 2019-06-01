@@ -2,7 +2,6 @@ import React from 'react';
 import Aux from '../../hoc/Aux/Aux';
 import {Form, Input, Button} from 'semantic-ui-react';
 import {NavLink} from 'react-router-dom';
-import './ForgotPassword.css';
 
 const forgotPassword = ( props ) => (
     <Aux>

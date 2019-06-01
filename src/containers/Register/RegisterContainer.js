@@ -4,9 +4,9 @@ import axios from 'axios';
 import Register from '../../components/Register/Register';
 
 const GENDER_OPTIONS = [
-    {key: 'm', text: 'Male', value: 'm'},
-    {key: 'f', text: 'Female', value: 'f'},
-    {key: 'o', text: 'Other', value: 'other'},
+    {key: 'm', text: 'Male', value: 1},
+    {key: 'f', text: 'Female', value: 2},
+    {key: 'o', text: 'Other', value: 3},
 ]
 
 class RegisterContainer extends Component {
@@ -16,7 +16,7 @@ class RegisterContainer extends Component {
         birthdate: "",
         city: "",
         email: "",
-        gender: "",
+        gender: null,
         username: "",
         password: "",
         repeatedPassword: "",
@@ -64,7 +64,7 @@ class RegisterContainer extends Component {
                     user_lastname: this.state.lastname,
                     user_birthdate: this.state.birthdate,
                     user_city: this.state.city,
-                    user_gender: this.state.gender,
+                    gender_id: this.state.gender,
                     user_username: this.state.username,
                     user_email: this.state.email,
                     user_password: this.state.password,

@@ -2,13 +2,19 @@ import React, { Component } from 'react';
 import Layout from '../../components/Layout/Layout';
 import { Container, Segment } from 'semantic-ui-react';
 import RoundButton from '../../components/UI/RoundButton/RoundButton';
-import HomeBody from '../../components/Home/Home';
 import PokemonList from '../../containers/PokemonList/PokemonList';
 import Aux from '../../hoc/Aux/Aux';
-
+import '../../components/Home/Home.css';
 
 class HomeContainer extends Component {
-    // fetch user data ?
+    
+    componentDidMount() {
+        // fetch catches data
+    }
+
+    onCatchClick = () => {
+        // show modal in backdrop
+    }
     
     render () {
         return(
@@ -16,11 +22,12 @@ class HomeContainer extends Component {
 
                 <Layout>
                     <div className="AddButtonSpace">
-                        <RoundButton color="blue"><i className="large plus icon"></i></RoundButton>
+                        <RoundButton color="blue" onClick={this.onCatchClick}><i className="large plus icon"></i></RoundButton>
                     </div>
                     <Container>
                         <Segment>
-                            <HomeBody />
+                            <h1>List</h1>
+                            <hr></hr>
                             <PokemonList />
                         </Segment>
                     </Container>

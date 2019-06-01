@@ -5,6 +5,10 @@ class PokemonList extends Component {
 
     // fetch list
 
+    // map data
+
+    // return list of pokemons
+
     render () {
         return (
             <div></div>
