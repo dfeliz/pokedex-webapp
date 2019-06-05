@@ -7,15 +7,16 @@ import Aux from '../../hoc/Aux/Aux';
 import Modal from '../../components/UI/Modal/Modal';
 import CatchContainer from './CatchContainer';
 import '../../components/Home/Home.css';
+import axios from 'axios';
 
 class HomeContainer extends Component {
     state = { 
-        catching: false
+        catching: false,
+        catches: [],
     }
 
-
     componentDidMount() {
-        // fetch catches data
+        this.fetchCatches();
     }
 
     handleCatchVisibility = () => {
@@ -23,6 +24,24 @@ class HomeContainer extends Component {
             return {
                 catching: !prevState.catching 
             }
+        })
+        this.fetchCatches();
+    }
+
+    fetchCatches = async () => {
+        let data = {
+            user_username: window.localStorage.getItem('user')
+        }
+
+        await axios.post('http://localhost:3000/user/catches', data, {
+            headers: {
+                "Authorization" : window.localStorage.getItem('token'),
+            }
+        }).then((response) => {
+            this.setState({ catches: response.data });
+        }).catch((err) => {
+            alert('Could not fetch your pokemon list');
+            console.log(err);
         })
     }
     
@@ -40,7 +59,7 @@ class HomeContainer extends Component {
                         <Segment>
                             <h1>List</h1>
                             <div className="ui divider" />
-                            <PokemonList />
+                            <PokemonList fetchCatches={this.fetchCatches} catches={this.state.catches}/>
                         </Segment>
                     </Container>
                 </Layout>
