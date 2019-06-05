@@ -3,11 +3,12 @@
     z-index: 500;
     background-color: white;
     width: 80%;
-    border: 1px solid #ccc;
+    border: 0;
+    border-radius: 5px;
     box-shadow: 1px 1px 1px black;
     padding: 16px;
     left: 15%;
-    top: 30%;
+    top: 16%;
     box-sizing: border-box;
     transition: all 0.3s ease-out;
 }

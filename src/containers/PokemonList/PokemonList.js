@@ -1,7 +1,18 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 class PokemonList extends Component {
-    state = {  };
+    state = {
+        pokemons: [],
+    };
+
+    async componentDidMount() {
+        await axios.get('http://localhost:3000/user/pokemons', {
+            headers: {
+                'Authorization' : `${window.localStorage.getItem('token')}`
+            }
+        })
+    }
 
     // fetch list
 

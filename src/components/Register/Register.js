@@ -82,7 +82,7 @@ const register = ( props ) => (
                     label="Birthdate"
                     onChange={(e) => props.onTextChange(e, "birthdate")}
                     required
-                />
+                    />
                 <Form.Field 
                     id="city"
                     control={Input}

@@ -1,0 +1,13 @@
+.FieldHeader {
+    font-family: Lato, Helvetica, sans-serif;
+    color: rgba(0, 0, 0, 0.87);
+    font-weight: 700;
+    display: block;
+    margin-bottom: 4px;
+    font-size: 13px;
+}
+
+.Modal .DatePicker {
+    margin-top: 10px;
+    margin-bottom: 5px;
+}

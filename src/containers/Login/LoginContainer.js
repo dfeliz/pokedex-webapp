@@ -26,7 +26,7 @@ class LoginContainer extends Component {
                 if (response.statusText === "Success") {
                     window.localStorage.setItem("token", response.data.token);
                     window.localStorage.setItem("user", response.data.username);
-                    window.location.href="/home";
+                    window.location.href="/";
                 }
                 else {
                     console.log(response);

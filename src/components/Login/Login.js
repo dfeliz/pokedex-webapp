@@ -34,7 +34,7 @@ const login = ( props ) => (
             <div className="ui horizontal divider">OR</div>
             <NavLink to="/register">
                 <Button fluid color="green">Register</Button>
-            </NavLink>
+            </NavLink>);
         </Form.Group>
     </Aux>
 );
