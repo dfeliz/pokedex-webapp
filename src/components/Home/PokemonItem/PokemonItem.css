@@ -1,3 +1,10 @@
+@media(max-width: 1200px ){ 
+    .PokemonItemContainer {
+        width: 100px !important;
+        height: 200px !important;
+    }
+}
+
 .PokemonItemContainer {
     cursor: pointer;
     background-color: #f4f4f4;

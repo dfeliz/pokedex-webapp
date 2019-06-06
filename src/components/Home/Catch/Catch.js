@@ -12,7 +12,8 @@ const Catch = ( props ) => (
         <Form onSubmit={props.onSubmit}>
             <Form.Field
                 label="Captured pokemon"
-                control={Select} //TODO: Use a select with search
+                control={Select}
+                search
                 options={props.pokemons}
                 placeholder="Select a pokemon"
                 onChange={props.onSelectChange}
