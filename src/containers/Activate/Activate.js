@@ -19,7 +19,7 @@ class Activate extends Component {
                 hash: values.code,
                 email: values.email,
             }
-            await axios.post('http://localhost:3000/user/activate', data)
+            await axios.post(`${process.env.REACT_APP_SERVER_URL}:${process.env.REACT_APP_SERVER_PORT}/user/activate`, data)
                 .then((response) => {
                     this.setState({isValid: true});
                 })

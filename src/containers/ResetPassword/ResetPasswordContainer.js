@@ -24,7 +24,7 @@ class ResetPasswordContainer extends Component {
                 email: values.email,
             }
             this.setState({ email: values.email });
-            await axios.post("http://localhost:3000/user/checkresetpassword", data)
+            await axios.post(`${process.env.REACT_APP_SERVER_URL}:${process.env.REACT_APP_SERVER_PORT}/user/checkresetpassword`, data)
                 .then((response) => {
                     if (response.statusText === "Success") {
                         this.setState({ resetPasswordValid: true});
@@ -46,7 +46,7 @@ class ResetPasswordContainer extends Component {
                 newPassword: password,
                 email: email,
             }
-            await axios.post("http://localhost:3000/user/resetpassword", data)
+            await axios.post(`${process.env.REACT_APP_SERVER_URL}:${process.env.REACT_APP_SERVER_PORT}/user/resetpassword`, data)
                 .then((response) => {
                     console.log(response);
                     alert('Password changed correctly!');

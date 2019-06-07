@@ -16,7 +16,7 @@ class CatchContainer extends Component {
     }
 
     async componentDidMount() {
-        let response = await axios.get('http://localhost:3000/pokemon/');
+        let response = await axios.get(`${process.env.REACT_APP_SERVER_URL}:${process.env.REACT_APP_SERVER_PORT}/pokemon`);
         let extract = response.data;
         let options = [];
         extract.map((item) => {
@@ -53,7 +53,7 @@ class CatchContainer extends Component {
             poke_id: selectedPokemon,
         }
         try {
-            await axios.post('http://localhost:3000/catch/', data)
+            await axios.post(`${process.env.REACT_APP_SERVER_URL}:${process.env.REACT_APP_SERVER_PORT}/catch`, data)
         }
         catch (err) {
             console.log(err);

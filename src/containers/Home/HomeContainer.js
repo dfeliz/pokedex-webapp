@@ -36,7 +36,7 @@ class HomeContainer extends Component {
     }
 
     fetchCatches = async () => {
-        await axios.get('http://localhost:3000/user/catches', {
+        await axios.get(`${process.env.REACT_APP_SERVER_URL}:${process.env.REACT_APP_SERVER_PORT}/user/catches`, {
             headers: {
                 "Authorization" : window.localStorage.getItem('token'),
             }
@@ -65,7 +65,7 @@ class HomeContainer extends Component {
     handlePokemonDelete = async () => {
         this.setState({ deleting: true });
         let id = this.state.selectedPokemon.catch_id;
-        await axios.delete(`http://localhost:3000/user/catches/${id}`, {
+        await axios.delete(`${process.env.REACT_APP_SERVER_URL}:${process.env.REACT_APP_SERVER_PORT}/user/catches/${id}`, {
             headers: {
                 "Authorization" : window.localStorage.getItem('token'),
             }

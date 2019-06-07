@@ -72,7 +72,7 @@ class RegisterContainer extends Component {
                 }
             }
 
-            await axios.post('http://localhost:3000/user/register', data, {
+            await axios.post(`${process.env.REACT_APP_SERVER_URL}:${process.env.REACT_APP_SERVER_PORT}/user/register`, data, {
                 headers: {
                     "Content-Type": "application/json",
                 }

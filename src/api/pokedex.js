@@ -5,7 +5,7 @@ const verifyUser = async (data) => {
         exists: false,
         username: null,
     };
-    await axios.post("http://localhost:3000/token/verify", data)
+    await axios.post(`${process.env.REACT_APP_SERVER_URL}:${process.env.REACT_APP_SERVER_PORT}/token/verify`, data)
         .then((requestResponse) => {
             response.exists = true;
             response.username = requestResponse.data.username;

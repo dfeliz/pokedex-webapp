@@ -34,7 +34,7 @@ class ProfileContainer extends Component {
     }
 
     fetchProfile = async () => {
-        await axios.get("http://localhost:3000/user/profile", {
+        await axios.get(`${process.env.REACT_APP_SERVER_URL}:${process.env.REACT_APP_SERVER_PORT}/user/profile`, {
             headers: {
                 "Authorization" : window.localStorage.getItem('token'),
             }
@@ -53,7 +53,7 @@ class ProfileContainer extends Component {
             user_email: this.state.userData.user_email,
             gender_id: this.state.userData.gender_id
         }
-        await axios.post("http://localhost:3000/user/profile/update", data, {
+        await axios.post(`${process.env.REACT_APP_SERVER_URL}:${process.env.REACT_APP_SERVER_PORT}/user/profile/update`, data, {
             headers: {
                 "Authorization" : window.localStorage.getItem('token'),
             }

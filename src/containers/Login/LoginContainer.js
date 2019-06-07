@@ -21,7 +21,7 @@ class LoginContainer extends Component {
                 password
             }
         }
-        await axios.post(`http://localhost:3000/user/login`, data)
+        await axios.post(`${process.env.REACT_APP_SERVER_URL}:${process.env.REACT_APP_SERVER_PORT}/user/login`, data)
             .then((response) => {
                 if (response.statusText === "Success") {
                     window.localStorage.setItem("token", response.data.token);
