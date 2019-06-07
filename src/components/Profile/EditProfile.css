@@ -1,9 +1,10 @@
-#ProfileSegment p {
+.editProfileLabel {
     font-weight: bold;
     line-height: 32px;
     font-size: 16px;
+    margin-bottom: 5px;
 }
 
-#ProfileSegment p span {
+.editProfileLabel span {
     font-weight: 100;
 }

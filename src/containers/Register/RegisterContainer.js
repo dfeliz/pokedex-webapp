@@ -78,7 +78,11 @@ class RegisterContainer extends Component {
                 }
             }).then((response) => {
                 console.log(response);
-                if (response.status === 200) {
+                if (response.statusText === "Error") {
+                    alert(response.data.response);
+                    this.setState({loading: false});
+                }
+                else {
                     this.setState({redirect: true});
                 }
             }).catch((err) => {

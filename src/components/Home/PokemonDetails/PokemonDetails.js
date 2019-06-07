@@ -23,7 +23,9 @@ const pokemonDetails = ( props ) => {
                 mapCoordX={parseFloat(Catch.catch_location_x)}
                 mapCoordY={parseFloat(Catch.catch_location_y)}
             />
-            <Button id="RemoveButton" color="red" fluid>Remove from pokedex</Button>
+            {
+                props.deleting ? <Button disabled loading id="RemoveButton" color="red" fluid>Remove from pokedex</Button> : <Button onClick={props.onPokemonDelete} id="RemoveButton" color="red" fluid>Remove from pokedex</Button>
+            }
         </div>
     );
 }

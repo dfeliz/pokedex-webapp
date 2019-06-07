@@ -11,7 +11,7 @@ const pokemonItem = ( props ) => {
             <div className="PokemonItemContainer" onClick={() => props.showDetails(pokemon)}>
                 <Image centered src={props.item.pokemon.poke_image} />
                 <span>{props.item.pokemon.poke_name}</span>
-                <p className="CatchedLabel">Catched on:</p>
+                <p className="CatchedLabel">Caught on:</p>
                 <p>{props.item.catch_date}</p>
             </div>
         </Grid.Column>

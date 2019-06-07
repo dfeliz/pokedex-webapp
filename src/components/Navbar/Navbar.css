@@ -1,17 +1,19 @@
 .Navbar {
     width: 100%;
     height: 50px;
-    background: #66c0f8;
+    background: rgba(255, 255, 255, 0.1);
     display: flex;
 }
 
 .LogoContainer {
     height: 50px;
     margin-left: 20px;
+    cursor: pointer;
 }
 
 .LogoContainer h1 {
     line-height: 50px;
+    color: black;
 }
 
 .Right {

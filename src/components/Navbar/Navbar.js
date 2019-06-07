@@ -15,12 +15,6 @@ const inSessionNavbar = (props) => (
                 Profile
             </Button>
         </NavLink>
-        <NavLink to="/settings">
-            <Button color="blue">
-                <i className="cog icon"></i>
-                Settings
-            </Button>
-        </NavLink>
         <NavLink to="/logout">
             <Button color="red">
                 <i className="sign out alternate icon"></i>
@@ -35,7 +29,7 @@ const noSessionNavbar = () => (
         <NavLink to="/login">
             <Button color="blue">Log in</Button>
         </NavLink>
-        <NavLink to="register">
+        <NavLink to="/register">
             <Button color="green">Register</Button>
         </NavLink>
     </div>
@@ -44,9 +38,11 @@ const noSessionNavbar = () => (
 const navbar = ( props ) => {
     return (
         <div className="Navbar">
-            <div className="LogoContainer">
-                <h1>Pokedex</h1>
-            </div>
+            <NavLink to="/">
+                <div className="LogoContainer">
+                    <h1>Pokedex</h1>
+                </div>
+            </NavLink>
             { 
                 props.isLoggedIn ? inSessionNavbar(props) : noSessionNavbar()
             }

@@ -56,10 +56,10 @@ class App extends Component {
             <GuestRoute path="/activate" isLoggedIn={this.state.isLoggedIn} component={Activate} />
             <GuestRoute path="/forgot-password" isLoggedIn={this.state.isLoggedIn} component={ForgotPassword} exact/>
             <GuestRoute path="/reset-password" isLoggedIn={this.state.isLoggedIn} component={ResetPassword} />
+            <GuestRoute path="/email-sent" isLoggedIn={this.state.isLoggedIn} component={ConfirmEmail} exact />
             <PrivateRoute path="/logout" isLoggedIn={this.state.isLoggedIn} component={Logout} exact/>
             <PrivateRoute path="/home" isLoggedIn={this.state.isLoggedIn} component={Home} exact/>
             <PrivateRoute path="/profile" isLoggedIn={this.state.isLoggedIn} component={Profile} exact/>
-            <PrivateRoute path="/settings" isLoggedIn={this.state.isLoggedIn} component={Settings} exact/>
             <Route component={err404}/>
           </Switch>
         </BrowserRouter>
