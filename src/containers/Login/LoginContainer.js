@@ -31,7 +31,7 @@ class LoginContainer extends Component {
                 else {
                     console.log(response);
                     this.setState({ loading: false });
-                    alert('User and password combination not found');
+                    alert(response.data.response);
                 }
             })
             .catch((err) => {
