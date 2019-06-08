@@ -13,6 +13,7 @@ import Profile from './containers/Profile/ProfileContainer';
 import Logout from './containers/Logout/LogoutContainer';
 import ForgotPassword from './containers/ForgotPassword/ForgotPasswordContainer';
 import ResetPassword from './containers/ResetPassword/ResetPasswordContainer';
+import './App.css';
 
 const PrivateRoute = ({ component: Component, isLoggedIn, ...rest }) => (
   <Route {...rest} render={ (props) => (

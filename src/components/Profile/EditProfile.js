@@ -46,6 +46,7 @@ const editProfile = ( props ) => (
                     width={"5"} 
                     control={Select}
                     options={props.genderOptions}
+                    onChange={props.onGenderChange}
                     required
                 />
             </div>

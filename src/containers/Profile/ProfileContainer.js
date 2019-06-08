@@ -82,14 +82,20 @@ class ProfileContainer extends Component {
         this.setState({ userData : updatedUserdata});
     }
 
+    handleGenderChange = (_, event) => {
+        const updatedUserdata = {
+            ...this.state.userData,
+            gender_id : event.value
+        }
+        this.setState({ userData : updatedUserdata});
+    }
+
     enterEditMode = () => {
         this.toggleEditMode();
         const backup = {
             ...this.state.userData
         }
         this.setState({ backup : backup });
-
-        
     }
 
     cancelEditMode = () => {
@@ -125,6 +131,7 @@ class ProfileContainer extends Component {
                                             genderOptions={GENDER_OPTIONS} 
                                             userData={this.state.userData}
                                             handleTextChange={this.handleTextChange}
+                                            onGenderChange={this.handleGenderChange}
                                             loading={this.state.loading}
                                         /> 
                                         : 

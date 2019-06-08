@@ -19,6 +19,7 @@ class CatchContainer extends Component {
         let response = await axios.get(`${process.env.REACT_APP_SERVER_URL}:${process.env.REACT_APP_SERVER_PORT}/pokemon`);
         let extract = response.data;
         let options = [];
+        // eslint-disable-next-line 
         extract.map((item) => {
             options.push({
                 key: item.poke_name,

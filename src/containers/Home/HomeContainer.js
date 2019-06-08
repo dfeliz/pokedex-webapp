@@ -75,7 +75,7 @@ class HomeContainer extends Component {
             headers: {
                 "Authorization" : window.localStorage.getItem('token'),
             }
-        }).then((response) => {
+        }).then(() => {
             alert('Successfully deleted');
             this.setState({ deleting: false });
             this.toggleModal();
@@ -120,8 +120,6 @@ class HomeContainer extends Component {
                 ));
             break;
         }
-        console.log(list);
-        console.log(newList);
         this.setState({ catches: newList });
     }
     
