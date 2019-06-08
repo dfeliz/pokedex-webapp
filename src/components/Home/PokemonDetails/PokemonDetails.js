@@ -15,7 +15,7 @@ const pokemonDetails = ( props ) => {
             <p>Catched at:</p>
             <MyGoogleMap 
                 isMarkerShown
-                googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCn0rnxFruFEPQRu7uenBmJX7xTt6vD4tw&libraries=geometry,drawing,places"
+                googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&key=${process.env.REACT_APP_GOOGLEAPIKEY}&libraries=geometry,drawing,places`}
                 loadingElement={<div style={{ height: `100%` }} />}
                 containerElement={<div style={{ height: `200px` }} />}
                 mapElement={<div style={{ height: `100%` }} />}
