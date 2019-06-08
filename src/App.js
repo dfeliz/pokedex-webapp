@@ -10,7 +10,6 @@ import Activate from './containers/Activate/Activate';
 import PokedexApi from './api/pokedex';
 import Home from './containers/Home/HomeContainer';
 import Profile from './containers/Profile/ProfileContainer';
-import Settings from './containers/Settings/Settings';
 import Logout from './containers/Logout/LogoutContainer';
 import ForgotPassword from './containers/ForgotPassword/ForgotPasswordContainer';
 import ResetPassword from './containers/ResetPassword/ResetPasswordContainer';

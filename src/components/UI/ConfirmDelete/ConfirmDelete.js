@@ -3,10 +3,10 @@ import { Button } from 'semantic-ui-react';
 
 const confirmDelete = ( props ) => (
     <div>
-        <h1>Delete {props.item}</h1>
+        <h1>Delete {props.selectedPokemon.pokemon.poke_name}</h1>
         <div className="ui divider"/>
-        <p>Do you REALLY want to delete your {props.item}?</p>
-        <span style={{color: 'red'}}>You will lose this {props.item} FOREVER.</span>
+        <p>Do you REALLY want to delete your {props.selectedPokemon.pokemon.poke_name}?</p>
+        <span style={{color: 'red'}}>You will lose this {props.selectedPokemon.pokemon.poke_name} FOREVER.</span>
         <br></br>
         <br></br>
         <Button color={"red"} onClick={props.confirm}>Delete this pokemon!</Button>

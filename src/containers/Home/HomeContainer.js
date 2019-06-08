@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Segment } from 'semantic-ui-react';
+import { Container, Segment, Select } from 'semantic-ui-react';
 import Layout from '../../components/Layout/Layout';
 import Modal from '../../components/UI/Modal/Modal';
 import ConfirmModal from '../../components/UI/Modal/ConfirmModal';
@@ -11,6 +11,13 @@ import CatchContainer from './CatchContainer';
 import Aux from '../../hoc/Aux/Aux';
 import axios from 'axios';
 import '../../components/Home/Home.css';
+
+const SORT_OPTIONS = [
+    {key: 1, text: 'Name', value: 'alphabet'},
+    {key: 2, text: 'Added (default)', value: 'added' },
+    {key: 3, text: 'Catch date (newest first)', value: 'catchdaten'},
+    {key: 4, text: 'Catch date (oldest first)', value: 'catchdateo'},
+];
 
 class HomeContainer extends Component {
     state = { 
@@ -49,7 +56,6 @@ class HomeContainer extends Component {
     }
 
     handlePokemonClick = (item) => {
-        console.log(item);
         this.setState({ selectedPokemon: item });
         this.toggleModal();
     }
@@ -88,6 +94,36 @@ class HomeContainer extends Component {
             }
         });
     }
+
+    sortBy = (_, param) => {
+        let list = this.state.catches;
+        let newList;
+        switch (param.value) {
+            case 'alphabet':
+                newList = list.sort((a,b) => (
+                    a.pokemon.poke_name > b.pokemon.poke_name ? 1 : -1
+                ));
+            break;
+            case 'catchdaten':
+                newList = list.sort((a,b) => (
+                    a.catch_date < b.catch_date ? 1 : -1
+                ));
+            break;
+            case 'catchdateo':
+                newList = list.sort((a,b) => (
+                    a.catch_date > b.catch_date ? 1 : -1
+                ));
+            break;
+            default:
+                newList = list.sort((a,b) => (
+                    a.catch_id > b.catch_id ? 1 : -1
+                ));
+            break;
+        }
+        console.log(list);
+        console.log(newList);
+        this.setState({ catches: newList });
+    }
     
     render () {
         return(
@@ -120,7 +156,19 @@ class HomeContainer extends Component {
                         <Segment>
                             <h1>List</h1>
                             <div className="ui divider" />
-                            <PokemonList fetchCatches={this.fetchCatches} catches={this.state.catches} showDetails={this.handlePokemonClick}/>
+                            <div id="SortDropdown">
+                                <label>Sort by:</label>
+                                <Select 
+                                    options={SORT_OPTIONS} 
+                                    onChange={this.sortBy}
+                                    placeholder="Select an option"
+                                />
+                            </div>
+                            <PokemonList 
+                                fetchCatches={this.fetchCatches} 
+                                catches={this.state.catches}
+                                showDetails={this.handlePokemonClick}
+                            />
                         </Segment>
                     </Container>
                 </Layout>

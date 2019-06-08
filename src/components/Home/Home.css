@@ -3,3 +3,13 @@
     width: 100%;
     text-align: center;
 }
+
+#SortDropdown {
+    position: absolute;
+    right: 13px;
+    top: 13px;
+}
+
+#SortDropdown label {
+    margin-right: 6px;
+}
