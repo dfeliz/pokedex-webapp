@@ -13,3 +13,10 @@
 #SortDropdown label {
     margin-right: 6px;
 }
+
+#Pagination {
+    height: 55px;
+    display: block;
+    text-align: center;
+    padding-top: 15px;
+}

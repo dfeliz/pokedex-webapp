@@ -1,3 +1,11 @@
 .PokemonList {
     padding-right: 10px;
+    min-height: 100px;
+}
+
+.NoPokemonText {
+    color: #919191;
+    display: block;
+    text-align: center;
+    margin: 48px auto 48px auto
 }

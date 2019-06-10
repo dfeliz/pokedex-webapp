@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Segment, Select } from 'semantic-ui-react';
+import { Container, Segment, Select, Pagination } from 'semantic-ui-react';
 import Layout from '../../components/Layout/Layout';
 import Modal from '../../components/UI/Modal/Modal';
 import ConfirmModal from '../../components/UI/Modal/ConfirmModal';
@@ -13,8 +13,8 @@ import axios from 'axios';
 import '../../components/Home/Home.css';
 
 const SORT_OPTIONS = [
-    {key: 1, text: 'Name', value: 'alphabet'},
-    {key: 2, text: 'Added (default)', value: 'added' },
+    {key: 1, text: 'Added (default)', value: 'added' },
+    {key: 2, text: 'Name', value: 'alphabet'},
     {key: 3, text: 'Catch date (newest first)', value: 'catchdaten'},
     {key: 4, text: 'Catch date (oldest first)', value: 'catchdateo'},
 ];
@@ -27,10 +27,14 @@ class HomeContainer extends Component {
         selectedPokemon: null,
         deleting: false,
         showDeleteDialog: false,
+        selectedPage: 1,
+        pageLimit: 12,
+        catchCount: 0,
+        sortBy: null,
     }
 
     componentDidMount() {
-        this.fetchCatches();
+        this.fetchCatches(this.state.selectedPage);
     }
 
     handleCatchVisibility = () => {
@@ -39,16 +43,18 @@ class HomeContainer extends Component {
                 catching: !prevState.catching 
             }
         })
-        this.fetchCatches();
+        this.fetchCatches(this.state.selectedPage, this.state.sortBy);
     }
 
-    fetchCatches = async () => {
-        await axios.get(`${process.env.REACT_APP_SERVER_URL}:${process.env.REACT_APP_SERVER_PORT}/user/catches`, {
+    fetchCatches = async (selectedPage, sortBy) => {
+        await axios.get(`${process.env.REACT_APP_SERVER_URL}:${process.env.REACT_APP_SERVER_PORT}/user/catches/?page=${selectedPage - 1}&pageSize=${this.state.pageLimit}&sortby=${sortBy}`, {
             headers: {
                 "Authorization" : window.localStorage.getItem('token'),
             }
         }).then((response) => {
-            this.setState({ catches: response.data });
+            this.setState({ catches: response.data.catches, catchCount: response.data.catchCount  });
+            this.setState({ selectedPage: selectedPage, sortBy: sortBy })
+
         }).catch((err) => {
             alert('Could not fetch your pokemon list');
             console.log(err);
@@ -80,7 +86,7 @@ class HomeContainer extends Component {
             this.setState({ deleting: false });
             this.toggleModal();
             this.toggleDeleteDialog();
-            this.fetchCatches();
+            this.fetchCatches(this.state.selectedPage, this.state.sortBy);
         }).catch((err) => {
             alert(`Error: ${err}`);
             this.setState({ deleting: false });
@@ -95,35 +101,29 @@ class HomeContainer extends Component {
         });
     }
 
+    handlePageChange = (event, data) => {
+        this.fetchCatches(data.activePage, this.state.sortBy);
+    }
+
     sortBy = (_, param) => {
-        let list = this.state.catches;
-        let newList;
         switch (param.value) {
             case 'alphabet':
-                newList = list.sort((a,b) => (
-                    a.pokemon.poke_name > b.pokemon.poke_name ? 1 : -1
-                ));
+                this.fetchCatches(1, "az")
             break;
             case 'catchdaten':
-                newList = list.sort((a,b) => (
-                    a.catch_date < b.catch_date ? 1 : -1
-                ));
+                this.fetchCatches(1, "datenewest")
             break;
             case 'catchdateo':
-                newList = list.sort((a,b) => (
-                    a.catch_date > b.catch_date ? 1 : -1
-                ));
+                this.fetchCatches(1, "dateoldest")
             break;
             default:
-                newList = list.sort((a,b) => (
-                    a.catch_id > b.catch_id ? 1 : -1
-                ));
+                this.fetchCatches(1)
             break;
         }
-        this.setState({ catches: newList });
     }
     
     render () {
+        const pages = Math.ceil(this.state.catchCount / this.state.pageLimit);
         return(
             <Aux>
                 <Modal show={this.state.catching} onBackdropClick={this.handleCatchVisibility}>
@@ -160,13 +160,22 @@ class HomeContainer extends Component {
                                     options={SORT_OPTIONS} 
                                     onChange={this.sortBy}
                                     placeholder="Select an option"
+                                    defaultValue={'added'}
                                 />
                             </div>
                             <PokemonList 
                                 fetchCatches={this.fetchCatches} 
                                 catches={this.state.catches}
-                                showDetails={this.handlePokemonClick}
+                                showDetails={this.handlePokemonClick}                                
                             />
+                            <div id="Pagination">
+                                <Pagination
+                                    defaultActivePage={1}
+                                    totalPages={pages}
+                                    onPageChange={this.handlePageChange}
+                                    activePage={this.state.selectedPage}
+                                />
+                            </div>
                         </Segment>
                     </Container>
                 </Layout>

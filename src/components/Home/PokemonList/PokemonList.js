@@ -13,7 +13,7 @@ class PokemonList extends Component {
         return (
             <div className="PokemonList">
                 <Grid relaxed columns={6}>
-                    {pokemonList}
+                    {catches.length === 0 ? <span className="NoPokemonText">There are no pokemons! To catch one, click plus button</span> : pokemonList}
                 </Grid>
             </div>
         );
