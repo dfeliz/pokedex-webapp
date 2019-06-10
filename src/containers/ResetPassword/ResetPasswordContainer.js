@@ -48,7 +48,6 @@ class ResetPasswordContainer extends Component {
             }
             await axios.post(`${process.env.REACT_APP_SERVER_URL}:${process.env.REACT_APP_SERVER_PORT}/user/resetpassword`, data)
                 .then((response) => {
-                    console.log(response);
                     alert('Password changed correctly!');
                     this.setState({ redirect: true });
                 })

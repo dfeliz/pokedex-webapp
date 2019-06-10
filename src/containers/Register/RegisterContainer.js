@@ -77,7 +77,6 @@ class RegisterContainer extends Component {
                     "Content-Type": "application/json",
                 }
             }).then((response) => {
-                console.log(response);
                 if (response.statusText === "Error") {
                     alert(response.data.response);
                     this.setState({loading: false});

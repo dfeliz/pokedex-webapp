@@ -18,7 +18,6 @@ class ForgotPasswordContainer extends Component {
         }
         axios.post(`${process.env.REACT_APP_SERVER_URL}:${process.env.REACT_APP_SERVER_PORT}/user/forgotpassword`, data)
             .then((response) => {
-                console.log(response);
                 if (response.statusText === "Error") {
                     alert(response.data.response);
                     this.setState({loading: false});
