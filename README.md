@@ -4,5 +4,8 @@ REACT_APP_SERVER_URL\
 REACT_APP_SERVER_PORT\
 REACT_APP_GOOGLEAPIKEY
 
-## Then start the app
+## Then install packages
+npm install
+
+## Start the app
 npm start
