@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Pokedex from './containers/Pokedex/PokedexContainer';
-import {BrowserRouter, Switch, Route, Redirect} from 'react-router-dom';
+import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import ConfirmEmail from './components/ConfirmEmail/ConfirmEmail'
 import LoggedInContext from '../src/helpers/Context/context';
 import Register from './containers/Register/RegisterContainer';
@@ -13,19 +13,9 @@ import Profile from './containers/Profile/ProfileContainer';
 import Logout from './containers/Logout/LogoutContainer';
 import ForgotPassword from './containers/ForgotPassword/ForgotPasswordContainer';
 import ResetPassword from './containers/ResetPassword/ResetPasswordContainer';
+import GuestRoute from './routes/GuestRoute';
+import PrivateRoute from './routes/PrivateRoute';
 import './App.css';
-
-const PrivateRoute = ({ component: Component, isLoggedIn, ...rest }) => (
-  <Route {...rest} render={ (props) => (
-    isLoggedIn === true ? <Component {...props} /> : <Redirect to='/login' /> 
-  )} />
-)
-
-const GuestRoute = ({ component: Component, isLoggedIn, ...rest }) => (
-  <Route {...rest} render={ (props) => (
-    isLoggedIn === false ? <Component {...props} /> : <Redirect to='/home' /> 
-  )} />
-)
 
 class App extends Component {
   state = { isLoggedIn: false, username: '' };
