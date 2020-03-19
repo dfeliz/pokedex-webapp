@@ -1,11 +1,17 @@
-# Running the app
-## First, config the .env file. Variables:
-REACT_APP_SERVER_URL\
-REACT_APP_SERVER_PORT\
-REACT_APP_GOOGLEAPIKEY
+# Setup
 
-## Then install packages
+1. Configurate .env file. 
+Variables:
+- REACT_APP_SERVER_URL
+- REACT_APP_SERVER_PORT
+- REACT_APP_GOOGLEAPIKEY
+
+2. Install packages
+```bash
 npm install
+```
 
-## Start the app
+# Run!
+```bash
 npm start
+```
