@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import Aux from '../../../hoc/Aux/Aux';
 import Backdrop from '../../UI/Backdrop/ForcedBackdrop';
 import './ConfirmModal.css';
 
@@ -11,7 +10,7 @@ class Modal extends Component {
 
     render() {
         return (
-            <Aux>
+            <>
                 <Backdrop show={this.props.show} onClick={this.props.onBackdropClick}/>
                 <div className="ForcedModal" style={{
                     transform: this.props.show ? 'translateY(0)' : 'translateY(-100vh)',
@@ -19,7 +18,7 @@ class Modal extends Component {
                 }}>
                     {this.props.show ? this.props.children : null}
                 </div>
-            </Aux>
+            </>
         );
     }
 }

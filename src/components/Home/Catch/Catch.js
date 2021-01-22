@@ -1,12 +1,11 @@
 import React from 'react';
-import Aux from '../../../hoc/Aux/Aux';
 import {Form, Button, Select} from 'semantic-ui-react';
 import MyGoogleMap from '../GoogleMap/MyGoogleMap';
 import {DatePicker} from '../../UI/DatePicker/DatePicker';
 import './Catch.css';
 
 const Catch = ( props ) => (
-    <Aux>
+    <>
         <h2>Catch a pokemon</h2>
         <div className="ui divider" />
         <Form onSubmit={props.onSubmit}>
@@ -39,7 +38,7 @@ const Catch = ( props ) => (
                 props.loading ? <Button disabled loading fluid color="blue" style={{marginTop: '10px'}}>Submit</Button> : <Button fluid color="blue" style={{marginTop: '10px'}}>Submit</Button>
             }
         </Form>
-    </Aux>
+    </>
 );
 
 export default Catch;

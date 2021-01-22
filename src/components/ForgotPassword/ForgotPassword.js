@@ -1,10 +1,9 @@
 import React from 'react';
-import Aux from '../../hoc/Aux/Aux';
 import {Form, Input, Button} from 'semantic-ui-react';
 import {NavLink, Redirect} from 'react-router-dom';
 
 const forgotPassword = ( props ) => (
-    <Aux>
+    <>
         <Form onSubmit={props.onFormSubmit}>
             <Form.Field
                 id="email"
@@ -25,7 +24,7 @@ const forgotPassword = ( props ) => (
                 <Button fluid color="blue">Back to login</Button>
             </NavLink>
         </Form>
-    </Aux>
+    </>
 );
 
 export default forgotPassword;

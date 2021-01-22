@@ -1,11 +1,10 @@
 import React from 'react';
-import Aux from '../../hoc/Aux/Aux';
 import { Form, Input, Button } from 'semantic-ui-react';
 import { withRouter, NavLink } from 'react-router-dom';
 import './Login.css';
 
 const login = ( props ) => (
-    <Aux>
+    <>
         <Form.Group>
             <Form className="Login" onSubmit={(e) => props.onFormSubmit(e)}>
                 <Form.Field
@@ -36,7 +35,7 @@ const login = ( props ) => (
                 <Button fluid color="green">Register</Button>
             </NavLink>
         </Form.Group>
-    </Aux>
+    </>
 );
 
 export default withRouter(login);

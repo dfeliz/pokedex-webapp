@@ -8,7 +8,6 @@ import ConfirmDelete from '../../components/UI/ConfirmDelete/ConfirmDelete';
 import PokemonList from '../../components/Home/PokemonList/PokemonList';
 import PokemonDetails from '../../components/Home/PokemonDetails/PokemonDetails';
 import CatchContainer from './CatchContainer';
-import Aux from '../../hoc/Aux/Aux';
 import axios from 'axios';
 import '../../components/Home/Home.css';
 
@@ -125,7 +124,7 @@ class HomeContainer extends Component {
     render () {
         const pages = Math.ceil(this.state.catchCount / this.state.pageLimit);
         return(
-            <Aux>
+            <>
                 <Modal show={this.state.catching} onBackdropClick={this.handleCatchVisibility}>
                     <CatchContainer 
                         onCatch={this.handleCatchVisibility} 
@@ -179,7 +178,7 @@ class HomeContainer extends Component {
                         </Segment>
                     </Container>
                 </Layout>
-            </Aux>
+            </>
         )
     }
 }

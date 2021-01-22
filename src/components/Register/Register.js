@@ -2,11 +2,10 @@ import React from 'react';
 import { Button, Form, Input, Select } from 'semantic-ui-react';
 import {Redirect, withRouter, NavLink} from 'react-router-dom';
 import {DatePicker} from '../UI/DatePicker/DatePicker';
-import Aux from '../../hoc/Aux/Aux';
 import './Register.css';
 
 const register = ( props ) => (
-    <Aux>
+    <>
         <Form.Group>
             <Form className="Register" onSubmit={props.onFormSubmit}>
                 <Form.Field 
@@ -106,7 +105,7 @@ const register = ( props ) => (
             props.redirect ? 
             <Redirect to="/confirm-email"/> : null
         }
-    </Aux>
+    </>
 );
 
 export default withRouter(register);

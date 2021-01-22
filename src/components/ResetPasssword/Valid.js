@@ -1,10 +1,9 @@
 import React from 'react';
-import Aux from '../../hoc/Aux/Aux';
 import {Form, Button, Input} from 'semantic-ui-react';
 import {Redirect} from 'react-router-dom';
 
 const valid = ( props ) => (
-    <Aux>
+    <>
         <Form onSubmit={props.onFormSubmit}>
             <Form.Field
                 type="password"
@@ -29,7 +28,7 @@ const valid = ( props ) => (
                 props.redirect ? <Redirect to="/login"/> : null
             }
         </Form>
-    </Aux>
+    </>
 );
 
 export default valid;
